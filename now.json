@@ -1,0 +1,7 @@
+{
+    "version": 1,
+      "env": {
+      "MONGO_URL": "@nadia-api-mongo",
+      "AUTH_SECRET": "@nadia-auth"
+    }
+  }
