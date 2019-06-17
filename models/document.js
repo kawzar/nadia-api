@@ -20,3 +20,7 @@ module.exports.getAll = (callback) => {
 module.exports.getById = (id, callback) => {
     Documents.findById(id, callback);
 }
+
+module.exports.getByFilter = (filter, callback) => {
+    Documents.find({ content: { "$regex": filter, "$options": "ix" }}, callback);
+}

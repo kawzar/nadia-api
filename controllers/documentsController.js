@@ -26,6 +26,19 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
+router.post('/filter/', (req, res) => {
+  const searchStr = req.body.searchStr;
+  documents.getByFilter(searchStr, (err, document) => {
+      if(err){
+          res.json({ success: false, message: 'Failed to load song. Error: ' + err});
+      } else {
+          res.write(JSON.stringify(document, null, 2));
+          res.end();
+      }
+  });
+});
+
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
     var token = getToken(req.headers);
     if (token) {
