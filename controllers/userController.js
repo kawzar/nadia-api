@@ -26,9 +26,10 @@ const USER_SECRET = process.env.AUTH_SECRET;
                 id: user._id,
                 email: user.email,
                 access_token: 'jwt ' + token,
-                expires_in: 60 }});
+                expires_in: 60 },
+              success: true});
           } else {
-            res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+            res.status(401).send({user: null, success: false, msg: 'Authentication failed. Wrong password.'});
           }
         });
       }

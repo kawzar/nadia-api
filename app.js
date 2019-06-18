@@ -19,10 +19,10 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Middlewares
-app.use(cors())
-  app.use(bodyParser.urlencoded({extended:true}));
-  app.use(bodyParser.json());
-  
+app.use(cors());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 100000 }));
+   
   
   // Enable preflight requests for all routes
   app.options('*', cors());
